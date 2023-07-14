@@ -1,5 +1,5 @@
 from django.db import models
-from shortuuidfield import ShortUUIDField
+#from shortuuidfield import ShortUUIDField
 from django.utils.html import mark_safe
 from django.contrib.auth.models import User
 #from authuser.models import User
@@ -36,7 +36,7 @@ def user_directory_path(instance, filename):
     return 'user_{0}/{1}'.format(instance.user.id, filename)
 
 class Category(models.Model):
-    cid = ShortUUIDField(unique = True, length = 15, max_length= 30, prefix='cat', alphabet= 'abcdefgh')
+    #cid = ShortUUIDField(unique = True, length = 15, max_length= 30, prefix='cat', alphabets= 'abcdefgh')
     
     title = models.CharField(max_length=100, default='Farm Produce')
     image = models.ImageField(upload_to="category", default='category.jpg')
@@ -52,7 +52,7 @@ class Category(models.Model):
     
     
 class Farmer(models.Model):
-    fid =  ShortUUIDField(unique = True, length = 15, max_length= 30, prefix='fam', alphabet= 'abcdefgh12345')
+    #fid =  ShortUUIDField(unique = True, length = 15, max_length= 30, prefix='fam', alphabets ='abcdefgh12345')
     title = models.TextField()
     image = models.ImageField(upload_to=user_directory_path, default='farmer.jpg')
     description = models.TextField(null=True, blank=True)
@@ -79,7 +79,7 @@ class Farmer(models.Model):
     
 class Product(models.Model):
     
-    pid = ShortUUIDField(unique = True, length = 15, max_length= 30, prefix='prd', alphabet= 'abcdefgh12345')
+    # pid = ShortUUIDField(unique = True, length = 15, max_length= 30, prefix='prd', alphabets = 'abcdefgh12345')
     
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to=user_directory_path,default='product.jpg')
@@ -88,7 +88,7 @@ class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     description = models.TextField(default="Enter your farm produce description")
-    price = models.DecimalField(max_digits=888888888888, decimal_places=2, default='200.00')
+    price = models.DecimalField(max_digits=8888888, decimal_places=2, default='200.00')
     old_price = models.DecimalField(max_digits=888888888888, decimal_places=2, default='400.00')
     specification = models.TextField(null=True, blank=True)
     product_status = models.CharField(choices=STATUS, max_length=10, default='In Review')
@@ -97,7 +97,7 @@ class Product(models.Model):
     featured = models.BooleanField(default=False)
     digital = models.BooleanField(default=False)
     
-    sku = ShortUUIDField(unique = True, length = 4, max_length= 10, prefix='sku', alphabet= '1234567890')
+    # sku = ShortUUIDField(unique = True, length = 4, max_length= 10, prefix='sku', alphabet= '1234567890')
     date = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(null=True, blank=True)
     
@@ -128,7 +128,7 @@ class ProductImage(models.Model):
         
 class CartOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    price = models.CharFieldmodels.DecimalField(max_digits=888888888888, decimal_places=2, default='200.00')
+    price = models.DecimalField(max_digits=888888888888, decimal_places=2, )
     paid_status = models.BooleanField(default=False)
     order_date = models.DateTimeField(auto_now_add=True)
     product_status = models.CharField(choices=STATUS_CHOICE, max_length=30, default='Processing')
