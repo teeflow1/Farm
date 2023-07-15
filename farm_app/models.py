@@ -16,7 +16,7 @@ STATUS_CHOICE = (
 STATUS = (
     ('draft', "Processing"),
     ('disabled', "Shipped"),
-    ('rejected', "Delivered"),
+    ('rejected', "Rejected"),
     ('published', "Delivered"),
     
     
