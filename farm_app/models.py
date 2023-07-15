@@ -17,7 +17,8 @@ STATUS = (
     ('draft', "Processing"),
     ('disabled', "Shipped"),
     ('rejected', "Rejected"),
-    ('published', "Delivered"),
+     ('review', "In Review"),
+    ('published', "Published"),
     
     
 )
@@ -44,7 +45,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "Categories"
         
-    def Category_image(self):
+    def category_image(self):
         return mark_safe ('<img src="%s" width = "50" height="50">' %(self.image.url))
     
     def __str__(self):
@@ -69,7 +70,7 @@ class Farmer(models.Model):
     class Meta:
         verbose_name_plural = "Farmers"
         
-    def Farmer_image(self):
+    def farmer_image(self):
         return mark_safe ('<img src="%s" width = "50" height="50">' %(self.image.url))
     
     def __str__(self):
@@ -82,11 +83,14 @@ class Product(models.Model):
     # pid = ShortUUIDField(unique = True, length = 15, max_length= 30, prefix='prd', alphabets = 'abcdefgh12345')
     
     title = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to=user_directory_path,default='product.jpg')
     description = models.TextField(null=True, blank=True)
     
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    
+    
+    farmer = models.ForeignKey(Farmer, on_delete=models.SET_NULL, null=True)
     description = models.TextField(default="Enter your farm produce description")
     price = models.DecimalField(max_digits=8888888, decimal_places=2, default='200.00')
     old_price = models.DecimalField(max_digits=888888888888, decimal_places=2, default='400.00')
@@ -105,8 +109,8 @@ class Product(models.Model):
     class Meta:
         verbose_name_plural = "Products"
         
-    def product_image(self):
-        return mark_safe ('<img src="%s" width = "50" height="50">' %(self.image.url))
+    def product_images(self):
+        return mark_safe('<img src="%s" width = "50" height= "50">' %(self.image.url))
     
     def __str__(self):
         return self.title
@@ -139,6 +143,7 @@ class CartOrder(models.Model):
         
 class CartOrderItem(models.Model):
     order = models.ForeignKey(CartOrder, on_delete=models.CASCADE)
+    #invoice_no = models.CharField(max_length=200)
     product_status = models.CharField(max_length=200)
     item = models.CharField (max_length=200)
     images = models.CharField (max_length=200)
