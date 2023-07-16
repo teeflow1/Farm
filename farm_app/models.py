@@ -45,7 +45,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "Categories"
         
-    def category_image(self):
+    def category_images(self):
         return mark_safe ('<img src="%s" width = "50" height="50">' %(self.image.url))
     
     def __str__(self):
@@ -70,7 +70,7 @@ class Farmer(models.Model):
     class Meta:
         verbose_name_plural = "Farmers"
         
-    def farmer_image(self):
+    def farmer_images(self):
         return mark_safe ('<img src="%s" width = "50" height="50">' %(self.image.url))
     
     def __str__(self):
@@ -121,7 +121,7 @@ class Product(models.Model):
     
     
 class ProductImage(models.Model):
-    images = models.ImageField(upload_to='profuct-images', default='product.jpg')
+    images = models.ImageField(upload_to='product-images', default='product.jpg')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     

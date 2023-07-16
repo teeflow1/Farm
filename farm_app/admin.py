@@ -9,10 +9,10 @@ class ProductAdmin(admin. ModelAdmin):
     list_display = ['user', 'title', 'product_images', 'price', 'featured', 'product_status']
     
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['title', 'category_image']
+    list_display = ['title', 'category_images']
     
 class FarmerAdmin(admin.ModelAdmin):
-    list_display=['title', 'farmer_image', 'description']
+    list_display=['title', 'farmer_images', 'description']
     
 class CartOrderAdmin(admin.ModelAdmin):
     list_display = ['user', 'price', 'paid_status', 'order_date',  'product_status']
