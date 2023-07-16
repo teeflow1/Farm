@@ -46,7 +46,7 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
         
     def category_images(self):
-        return mark_safe ('<img src="%s" width = "50" height="50">' %(self.image.url))
+        return mark_safe('<img src="%s" width="50" height="50 />' %(self.image.url))
     
     def __str__(self):
         return self.title
@@ -71,7 +71,7 @@ class Farmer(models.Model):
         verbose_name_plural = "Farmers"
         
     def farmer_images(self):
-        return mark_safe ('<img src="%s" width = "50" height="50">' %(self.image.url))
+        return mark_safe ('<img src="%s" width = "50" height="50" />' % (self.image.url))
     
     def __str__(self):
         return self.title
@@ -110,7 +110,7 @@ class Product(models.Model):
         verbose_name_plural = "Products"
         
     def product_images(self):
-        return mark_safe('<img src="%s" width = "50" height= "50">' %(self.image.url))
+        return mark_safe('<img src="%s" width = "50" height= "50" />' % (self.image.url))
     
     def __str__(self):
         return self.title
@@ -122,7 +122,7 @@ class Product(models.Model):
     
 class ProductImage(models.Model):
     images = models.ImageField(upload_to='product-images', default='product.jpg')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     date = models.DateTimeField(auto_now_add=True)
     
     
