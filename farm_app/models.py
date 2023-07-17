@@ -55,7 +55,7 @@ class Category(models.Model):
 class Farmer(models.Model):
     #fid =  ShortUUIDField(unique = True, length = 15, max_length= 30, prefix='fam', alphabets ='abcdefgh12345')
     title = models.TextField()
-    image = models.ImageField(upload_to=user_directory_path, default='farmer.jpg')
+    image = models.ImageField(upload_to =user_directory_path, default='farmer.jpg')
     description = models.TextField(null=True, blank=True)
     address = models.CharField(max_length=150, default='Enter your address')
     contact = models.CharField(max_length=100, default=1234567890)
@@ -71,7 +71,7 @@ class Farmer(models.Model):
         verbose_name_plural = "Farmers"
         
     def farmer_images(self):
-        return mark_safe ('<img src="%s" width = "50" height="50" />' % (self.image.url))
+        return mark_safe ('<img src= "%s" width = "50" height="50" />' % (self.image.url))
     
     def __str__(self):
         return self.title

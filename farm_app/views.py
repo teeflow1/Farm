@@ -3,11 +3,12 @@ from farm_app.models import Category, Farmer, Product, ProductImage, CartOrder, 
 
 def home(request):
     products = Product.objects.all()
-    context = {
-        'products':products
-    }
     
-    return render(request, 'apps/home.html', context)
+    return render(request, 'apps/home.html', {'products':products})
 
 def about(request):
     return render(request, 'apps/about.html', {})
+
+
+
+

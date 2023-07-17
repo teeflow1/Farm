@@ -50,7 +50,11 @@
 
 
     <!-- Banner Start -->
+    {% if products %}
+
+    {% for product in products %}
     <div class="container-fluid banner mb-5">
+       
         <div class="container">
             <div class="row gx-0">
                 <div class="col-md-6">
@@ -70,12 +74,11 @@
             </div>
         </div>
     </div>
-
-    {% for p in products %}
-
-        {{ Product }}
-
+    {{ product.title }}
+    {{ product.image.url}}
+    {{ product.price }}
     {% endfor %}
+   {% endif %}
     <!-- Banner Start -->
 
 
