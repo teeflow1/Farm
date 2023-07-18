@@ -1,5 +1,5 @@
 from django.db import models
-#from shortuuidfield import ShortUUIDField
+from shortuuidfield import ShortUUIDField
 from django.utils.html import mark_safe
 from django.contrib.auth.models import User
 #from authuser.models import User
@@ -121,7 +121,7 @@ class Product(models.Model):
     
     
 class ProductImage(models.Model):
-    images = models.ImageField(upload_to='product-images', default='product.jpg')
+    images = models.ImageField(upload_to='product_images', default='product.jpg')
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     date = models.DateTimeField(auto_now_add=True)
     
