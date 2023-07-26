@@ -10,5 +10,10 @@ def about(request):
     return render(request, 'apps/about.html', {})
 
 
+def service(request):
+    return render(request, 'apps/service.html', {})
+    
+
+
 
 
