@@ -159,6 +159,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 JAZZMIN_SETTINGS = {
    'site_header': 'MyFarm Shop',
     'site_brand': 'MyFarm Shop',
-    'site_logo': 'img/team-1.jpg',
+    'site_logo': 'img/fruit.png',
     'copyright': 'My-farm',
 }
