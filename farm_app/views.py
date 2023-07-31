@@ -6,12 +6,23 @@ def home(request):
     
     return render(request, 'apps/home.html', {'products':products})
 
+
+def index(request):
+    return render(request, 'apps/index.html', {})
+
 def about(request):
     return render(request, 'apps/about.html', {})
 
 
 def service(request):
     return render(request, 'apps/service.html', {})
+
+def product(request):
+    return render(request, 'apps/product.html', {})
+    
+    
+def contact(request):
+    return render(request, 'apps/contact.html', {})
     
 
 
