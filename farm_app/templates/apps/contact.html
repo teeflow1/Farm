@@ -19,18 +19,33 @@
 </div>
 <!-- end breadcrumb section -->
 
+
+
 <!-- contact form -->
+
+{% if name %}
+<br/>
+<center>
+    <h3> Thanks {{ name }}</h3>
+    <p> We received your email and we will respond Shortly </p>
+</center>
+<br/>
+
+{% else %}
+
 <div class="contact-from-section mt-150 mb-150">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mb-5 mb-lg-0">
                 <div class="form-title">
                     <h2>Have you any question?</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, ratione! Laboriosam est, assumenda. Perferendis, quo alias quaerat aliquid. Corporis ipsum minus voluptate? Dolore, esse natus!</p>
+                    <p>  </p>
                 </div>
                  <div id="form_status"></div>
                 <div class="contact-form">
-                    <form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+                    <form method="POST">
+
+                        {% csrf_token %}
                         <p>
                             <input type="text" placeholder="Name" name="name" id="name">
                             <input type="email" placeholder="Email" name="email" id="email">
@@ -66,6 +81,7 @@
 </div>
 <!-- end contact form -->
 
+
 <!-- find our location -->
 <div class="find-location blue-bg">
     <div class="container">
@@ -80,10 +96,10 @@
 
 <!-- google map section -->
 <div class="embed-responsive embed-responsive-21by9">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.1570347955185!2d3.5973784738073773!3d6.50179572341766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bfb328af12319%3A0x1e48fa1ce3930059!2sSeaside%20Estate!5e0!3m2!1sen!2sng!4v1690828591504!5m2!1sen!2sng" width="400" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" class="embed-responsive-item"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.1570347955185!2d3.5973784738073773!3d6.50179572341766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bfb328af12319%3A0x1e48fa1ce3930059!2sSeaside%20Estate!5e0!3m2!1sen!2sng!4v1690828591504!5m2!1sen!2sng" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 <!-- end google map section -->
-
+{% endif %}
 
 
 {% endblock %}
