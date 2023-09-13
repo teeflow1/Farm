@@ -63,6 +63,7 @@
 
 						<!-- menu start -->
 						<nav class="main-menu">
+							{% if user.is_authenticated %}
 							<ul>
 								<li ><a href="{% url 'home' %}">Home</a>
 									<!--<ul class="sub-menu">
@@ -98,7 +99,8 @@
 										<li><a href="{% url 'cart' %}">Cart</a></li>
 									</ul>
 								</li>
-
+								<li><a href="{% url 'checkout' %}">Logout</a></li>
+								{% else %}
 								<li><a href="{% url 'shop' %}">Account</a>
 									<ul class="sub-menu">
 										<li><a href="{% url 'login' %}">Login</a></li>
@@ -106,6 +108,7 @@
 										
 									</ul>
 								</li>
+								{% endif %}
 
 
 								<li>
